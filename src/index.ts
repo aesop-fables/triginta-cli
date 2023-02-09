@@ -46,12 +46,12 @@ async function invokeAndAdaptHandler(
   }
 }
 
-interface TriginaCliOptions {
+interface TrigintaCliOptions {
   function?: string;
   port?: number;
 }
 
-function parseArgumentsIntoOptions(rawArgs: string[]): TriginaCliOptions {
+function parseArgumentsIntoOptions(rawArgs: string[]): TrigintaCliOptions {
   const args = arg(
     {
       '--port': Number,
@@ -62,18 +62,23 @@ function parseArgumentsIntoOptions(rawArgs: string[]): TriginaCliOptions {
     },
   );
 
-  return {
+  const options: TrigintaCliOptions = {
     function: args._[0],
-    port: args['--port'],
   };
+
+  if (args['--port'] !== undefined) {
+    options.port = args['--port'];
+  }
+
+  return options;
 }
 
 interface ICommand {
-  execute(options: TriginaCliOptions): Promise<void>;
+  execute(options: TrigintaCliOptions): Promise<void>;
 }
 
 class LocalCommand implements ICommand {
-  async execute(options: TriginaCliOptions): Promise<void> {
+  async execute(options: TrigintaCliOptions): Promise<void> {
     // Verify triginta config file exists
     if (!fs.existsSync(TRIGINTA_CONFIG_PATH)) {
       log(chalk.red(`Error `, chalk.white(`${TRIGINTA_CONFIG_PATH} not found.`)));
