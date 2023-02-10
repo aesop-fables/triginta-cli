@@ -41,6 +41,7 @@ async function invokeAndAdaptHandler(
     res.status(response.statusCode);
     res.send(response.body);
   } catch (e) {
+    log(chalk.red(`Error`, e));
     res.status(500);
     res.send(JSON.stringify(e));
   }
@@ -75,6 +76,25 @@ function parseArgumentsIntoOptions(rawArgs: string[]): TrigintaCliOptions {
 
 interface ICommand {
   execute(options: TrigintaCliOptions): Promise<void>;
+}
+
+const TRIGINTA_CONFIG_TEMPLATE = `export { RouteRegistry as routes } from '@aesop-fables/triginta';\nexport { container } from './Bootstrap';\n\n// Add all of your endpoints here for local development\nexport { MyEndpoint } from './MyEndpoint';\n`;
+const BOOTSTRAP_TEMPLATE = `import { HttpLambda } from '@aesop-fables/triginta';\n\nconst { createHttpLambda } = HttpLambda.initialize([]);\nconst container = HttpLambda.getContainer();\n\nexport { container, createHttpLambda };\n`;
+
+class InitCommand implements ICommand {
+  async execute(): Promise<void> {
+    const BOOTSTRAP_PATH = `./src/Bootstrap.ts`;
+
+    if (!fs.existsSync(TRIGINTA_CONFIG_PATH)) {
+      log(chalk.cyan(`info `, chalk.grey(`Generating triginta config file at ${TRIGINTA_CONFIG_PATH}.`)));
+      fs.writeFileSync(TRIGINTA_CONFIG_PATH, TRIGINTA_CONFIG_TEMPLATE, 'utf-8');
+    }
+
+    if (!fs.existsSync(BOOTSTRAP_PATH)) {
+      log(chalk.cyan(`info `, chalk.grey(`Generating bootstrap file at ${BOOTSTRAP_PATH}.`)));
+      fs.writeFileSync(BOOTSTRAP_PATH, BOOTSTRAP_TEMPLATE, 'utf-8');
+    }
+  }
 }
 
 class LocalCommand implements ICommand {
@@ -219,6 +239,9 @@ module.exports.cli = async function cli(args: string[]) {
   let command: ICommand | undefined;
   if (cliOptions.function === 'local') {
     command = new LocalCommand();
+  }
+  if (cliOptions.function === 'init') {
+    command = new InitCommand();
   }
 
   if (!command) {
