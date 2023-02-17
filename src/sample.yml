@@ -1,0 +1,8 @@
+name: sample-app
+strategy: httpv2
+functions:
+  - name: create-status-alert
+    handler: CreateStatusEndpoint.handler
+    http:
+      method: GET
+      route: /status-alerts
