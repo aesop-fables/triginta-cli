@@ -714,17 +714,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@middy/core@^1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@middy/core/-/core-1.5.2.tgz#41e09c541ad13fd7acc48a63a72a211206ce2f2b"
-  integrity sha512-ja9hE3BheH9brkpFvNZ8bEQjopTT6ldGSbCPSGZk3UVgC9i9SdhoPOoFetrl3sOBO/sG6L8kKPxxUWeo1aO9Ug==
-  dependencies:
-    once "^1.4.0"
-
-"@middy/core@^4.2.3":
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.2.3.tgz#30c31b86e69a8f6a8950456d9d1cc531012de20a"
-  integrity sha512-29iI0kVMQyZRrs/OdrZ1nO5aKzBc2u3NVhGcwyKmO9jXFZqxfFe3tc+/ihxzFlhPfC1+W+mXICwnG8bR2P5Z8Q==
+"@middy/core@^4.2.3", "@middy/core@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.2.6.tgz#38c8b5dec6df7f03a0b1826bbd6205d8c833aeb0"
+  integrity sha512-F2jMyB1+KB2trbfukcJB5qbAW4eyj5jNW+oJrLmh2DOhNI0XnDIQwrn8pWueiCWU5xEvkMUXjgJLCToFL0uTQg==
 
 "@middy/http-error-handler@^4.2.3":
   version "4.2.3"
@@ -2873,7 +2866,7 @@ on-finished@2.4.1:
   dependencies:
     ee-first "1.1.1"
 
-once@^1.3.0, once@^1.4.0:
+once@^1.3.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   integrity sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==
