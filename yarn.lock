@@ -708,12 +708,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@middy/core@^1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@middy/core/-/core-1.5.2.tgz#41e09c541ad13fd7acc48a63a72a211206ce2f2b"
-  integrity sha512-ja9hE3BheH9brkpFvNZ8bEQjopTT6ldGSbCPSGZk3UVgC9i9SdhoPOoFetrl3sOBO/sG6L8kKPxxUWeo1aO9Ug==
-  dependencies:
-    once "^1.4.0"
+"@middy/core@^4.2.7":
+  version "4.2.7"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.2.7.tgz#e5a8b306473721d5792a688cbf46456caab626d0"
+  integrity sha512-VXwtTEp2rqJedH12y6ye1nnHtXgvaBzgbF0cb5Vr3t+hkRV4z/D+5Iq0SG7N2425el2yQVvIhrdUNX+9/hZ4tw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2871,7 +2869,7 @@ on-finished@2.4.1:
   dependencies:
     ee-first "1.1.1"
 
-once@^1.3.0, once@^1.4.0:
+once@^1.3.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   integrity sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==

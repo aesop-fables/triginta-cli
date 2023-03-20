@@ -46,7 +46,7 @@
     "@aesop-fables/triginta": "^0.4.0",
     "@babel/core": "^7.11.6",
     "@jest/test-utils": "^0.0.0",
-    "@middy/core": "^1.5.2",
+    "@middy/core": "^4.2.7",
     "@jest/types": "29.4.2",
     "@types/babel__core": "^7.1.14",
     "@types/convert-source-map": "^2.0.0",
