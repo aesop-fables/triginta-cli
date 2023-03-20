@@ -1,7 +1,13 @@
 import { IConfiguredRoute } from '@aesop-fables/triginta';
 import { compileTrigintaConfig } from './compileTrigintaConfig';
 import { ICommand } from './ICommand';
-import { parseManifest, TrigintaFunctionManifest, TrigintaManifest, TRIGINTA_MANIFEST_PATH, writeManifest } from './TrigintaManifest';
+import {
+  parseManifest,
+  TrigintaFunctionManifest,
+  TrigintaManifest,
+  TRIGINTA_MANIFEST_PATH,
+  writeManifest,
+} from './TrigintaManifest';
 import chalk from 'chalk';
 import fs from 'fs';
 import glob from 'glob';
