@@ -15,7 +15,7 @@ export async function invokeAndAdaptHandler(
     const response = await invokeHttpHandler({
       configuredRoute,
       container,
-      rawPath: req.path,
+      rawPath: req.originalUrl,
       body: req.body,
     });
 
