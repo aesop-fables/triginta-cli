@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import chalk from 'chalk';
 import path from 'path';
 import { SyncCommand } from './SyncCommand';
