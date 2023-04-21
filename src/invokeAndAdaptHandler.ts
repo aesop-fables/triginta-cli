@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { IConfiguredRoute } from '@aesop-fables/triginta/lib/IConfiguredRoute';
 import { Request, Response } from 'express';
-import { invokeHttpHandler } from '@aesop-fables/triginta';
+import { TestUtils } from '@aesop-fables/triginta';
 import { IServiceContainer } from '@aesop-fables/containr';
 import { log } from './index';
 
@@ -12,7 +12,7 @@ export async function invokeAndAdaptHandler(
   container: IServiceContainer,
 ): Promise<void> {
   try {
-    const response = await invokeHttpHandler({
+    const response = await TestUtils.invokeHttpHandler({
       configuredRoute,
       container,
       rawPath: req.originalUrl,
