@@ -738,10 +738,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@middy/core@^4.2.7":
-  version "4.2.7"
-  resolved "https://registry.npmjs.org/@middy/core/-/core-4.2.7.tgz"
-  integrity sha512-VXwtTEp2rqJedH12y6ye1nnHtXgvaBzgbF0cb5Vr3t+hkRV4z/D+5Iq0SG7N2425el2yQVvIhrdUNX+9/hZ4tw==
+"@middy/core@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.4.0.tgz#337ae335ac60711402fd552ecfc08119223b4332"
+  integrity sha512-sNTeP6W1vaVN7ztXzksDP++I7tAdnqy2jG1dh3gRabhsGxVRyBOtNy7qThfdIhtl7YHHYL/J0XEIQJcYvzZyQQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
