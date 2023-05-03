@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { IConfiguredRoute } from '@aesop-fables/triginta/lib/IConfiguredRoute';
+import { IConfiguredRoute } from '@aesop-fables/triginta';
 import express from 'express';
 import http from 'http';
 import { compileTrigintaConfig } from './compileTrigintaConfig';

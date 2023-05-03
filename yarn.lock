@@ -2,18 +2,18 @@
 # yarn lockfile v1
 
 
-"@aesop-fables/containr@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@aesop-fables/containr/-/containr-0.2.4.tgz#969358c89e0aa79a895a7d9639922a42d9ac53a4"
-  integrity sha512-slXDO+Y6CiJjyfek6ypyPXMkIekgV4noWEOkeEyydOaliLRpisLoIGm3vR2bzpEp9reDJiuZE4vNnmiIA9wRgg==
+"@aesop-fables/containr@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@aesop-fables/containr/-/containr-0.2.5.tgz#db2dd38194041adfece9e7dfd9537eb914004529"
+  integrity sha512-GrIHpMnHo55yy1rZCviNdLzllqywohxXOoCFEMQcKLRMgE5d2ND8Sod337YEULJDQf210qzaLlKeY9ba621phg==
   dependencies:
     jest-mock-extended "^3.0.1"
     reflect-metadata "^0.1.13"
 
-"@aesop-fables/triginta@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@aesop-fables/triginta/-/triginta-0.5.0.tgz#97cb97b1e86f30290a9b43c0937ffa9631979a8b"
-  integrity sha512-TF4ocGwjfyhYgj/qhw5YYTxqeBoBo5Ur81XssCjYEUjoR3OBYPJDR7EEAaMpDhhH+u38M8IrPlsgRCkKLjDYaQ==
+"@aesop-fables/triginta@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@aesop-fables/triginta/-/triginta-0.7.0.tgz#0bb8ce8c04acc5f03b74797c85a374851be6c868"
+  integrity sha512-OAb3/chn+R9gwgzu6DbavSYbIcjYp9gp07nzNb1aHOOXKLmO6bJwLGl+Gf0CpCtq7WgMs5qiT0nYMiSdgDagLQ==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.0"
