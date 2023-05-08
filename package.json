@@ -44,7 +44,7 @@
   "devDependencies": {
     "@aesop-fables/containr": "^0.2.5",
     "@aesop-fables/triginta": "^0.7.0",
-    "@babel/core": "^7.11.6",
+    "@babel/core": "^7.21.8",
     "@jest/test-utils": "^0.0.0",
     "@jest/types": "29.5.0",
     "@middy/core": "^4.4.0",
