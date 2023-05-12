@@ -17,6 +17,7 @@ export async function invokeAndAdaptHandler(
       container,
       rawPath: req.originalUrl,
       body: req.body,
+      headers: req.headers,
     });
 
     if (!response.body) {
