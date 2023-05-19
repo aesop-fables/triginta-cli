@@ -39,7 +39,7 @@
     "glob": "^8.1.0",
     "jest": "^29.4.2",
     "string-builder": "^0.1.8",
-    "yaml": "^2.2.1"
+    "yaml": "^2.2.2"
   },
   "devDependencies": {
     "@aesop-fables/containr": "^0.2.5",
