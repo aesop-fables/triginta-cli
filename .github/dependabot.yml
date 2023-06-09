@@ -15,3 +15,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "typescript"
+        versions: ["5.x"]
