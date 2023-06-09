@@ -73,7 +73,8 @@
   "peerDependencies": {
     "@aesop-fables/containr": "0.3.x",
     "@aesop-fables/triginta": "0.8.x",
-    "@middy/core": "4.x"
+    "@middy/core": "4.x",
+    "aws-sdk": "2.x"
   },
   "engines": {
     "node": "^14.15.0 || ^16.10.0 || >=18.0.0"
