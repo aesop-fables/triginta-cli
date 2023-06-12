@@ -10,10 +10,10 @@
     jest-mock-extended "^3.0.1"
     reflect-metadata "^0.1.13"
 
-"@aesop-fables/triginta@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@aesop-fables/triginta/-/triginta-0.8.1.tgz#8d29ba45f28a464838f241737043efb951605a8a"
-  integrity sha512-SM8CDG7FNjwCuHVv7BqJiRGQrvNQp6tVq3F313/GwYbLm1X+lpCbbmy567RD7TasnFfe1ONObcHCjtunxkOSkg==
+"@aesop-fables/triginta@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@aesop-fables/triginta/-/triginta-0.8.2.tgz#78f11db4b559c730ebd001677125d169de1992e6"
+  integrity sha512-6pgpCT7Fo/j03uLbj+ZL5o/YDsSxTWPoP3uviX4aUarsYHC5/hWMJBlbPgWr+nXB03ySwt61rejQpep3oaeQ7Q==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
