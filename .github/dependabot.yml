@@ -18,3 +18,7 @@ updates:
     ignore:
       - dependency-name: "typescript"
         versions: ["5.x"]
+      - dependency-name: "chalk"
+        versions: ["5.x"]
+      - dependency-name: "glob"
+        versions: ["10.x"]
