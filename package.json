@@ -47,7 +47,7 @@
     "@babel/core": "^7.21.8",
     "@jest/test-utils": "^0.0.0",
     "@jest/types": "29.5.0",
-    "@middy/core": "^4.4.0",
+    "@middy/core": "^4.5.3",
     "@types/babel__core": "^7.1.14",
     "@types/convert-source-map": "^2.0.0",
     "@types/debug": "^4.1.7",
