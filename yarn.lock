@@ -723,10 +723,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@middy/core@^4.4.0":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.5.1.tgz#808c491332fd0bea8ac033c7493893f4ee945fae"
-  integrity sha512-1UQHwZioXclzuF1AJuTnpback/orNmGEJDuflUYpX+CTUqixC8hRWnARN8M0acchwjLyFXcNKaCtyfWkI0oKqQ==
+"@middy/core@^4.5.5":
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.5.5.tgz#a5769b79396d45bf212546b40b4667b9f47bbcb3"
+  integrity sha512-aufpLnrpIcGrpd1cjqWR1fc5iSbO2K63GPkUooT+jtI/M7mofqSkr1dtfPx7fRtAFlZVuAjHCF52wJxGgfj1Ng==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
