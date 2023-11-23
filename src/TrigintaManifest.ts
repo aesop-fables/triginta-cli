@@ -13,12 +13,10 @@ export declare type TrigintaFunctionManifest = {
   http: TrigintaFunctionHttpManifest;
 };
 
-export declare type TrigintaStrategyEnum = 'httpv2' | 'rest';
-
 // TODO -- Maybe we should allow resources to be specified?
 export declare type TrigintaManifest = {
   name: string;
-  strategy: TrigintaStrategyEnum;
+  middleware: string;
   functions: TrigintaFunctionManifest[];
 };
 

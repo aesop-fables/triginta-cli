@@ -100,7 +100,7 @@ export class SyncCommand implements ICommand {
     }
     const config: TrigintaManifest = {
       name,
-      strategy: 'httpv2',
+      middleware: 'httpv2',
       functions,
     };
 
