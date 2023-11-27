@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import fs from 'fs';
-// Ok, so we need to create the in memory object model of terraform again.
 function indent(level: number) {
   let value = '';
   for (let i = 0; i < level; i++) {
@@ -10,19 +8,20 @@ function indent(level: number) {
   return value;
 }
 
+export enum TerraformDataTypes {
+  string = 'string',
+}
+
 export class Terraform {
-  static stringify(statement: ITerraformStatement, level = 0) {
+  static stringify(statement: ITerraformStatement, prefixScope: boolean, level = 0) {
     const base = indent(level);
     let output = statement.type ? `${base}${statement.type}` : '';
-    if (statement.name) {
-      output += ` ${statement.name}`;
+
+    if (statement.labels?.length !== 0) {
+      output += ` ${statement.labels?.map((x) => `"${x}"`).join(' ')}`;
     }
 
-    if (statement.tags?.length !== 0) {
-      output += ` ${statement.tags?.map((x) => `"${x}"`).join(' ')}`;
-    }
-
-    output += ` {\n`;
+    output += `${prefixScope ? ' ' : ''}{\n`;
 
     if (statement.expressions?.length !== 0) {
       statement.expressions?.forEach((x) => {
@@ -40,17 +39,16 @@ export class Terraform {
       });
     }
 
-    output += `${base}}\n`;
+    output += `${base}}${prefixScope ? '\n' : ''}`;
     return output;
   }
 }
 
 export interface ITerraformStatement {
   readonly type?: string;
-  readonly name?: string;
   readonly children?: ITerraformStatement[];
-  readonly expressions?: TerraformExpression[]
-  readonly tags?: string[];
+  readonly expressions?: TerraformExpression[];
+  readonly labels?: string[];
 
   stringify(level: number): string;
 }
@@ -58,12 +56,48 @@ export interface ITerraformStatement {
 export class TerraformBlock implements ITerraformStatement {
   readonly children: ITerraformStatement[] = [];
   readonly expressions: TerraformExpression[] = [];
-  readonly tags: string[] = [];
+  readonly labels: string[] = [];
 
-  constructor(readonly type?: string, readonly name?: string) {}
+  constructor(readonly type?: string, readonly prefix = true) {}
+
+  addExpression(left: string, right: ITerraformStatement) {
+    this.expressions.push(new TerraformExpression(left, right));
+    return this;
+  }
+
+  append(statement: ITerraformStatement) {
+    this.children.push(statement);
+    return this;
+  }
+
+  appendLabel(label: string) {
+    this.labels.push(label);
+    return this;
+  }
 
   stringify(level: number): string {
-    return Terraform.stringify(this, level);
+    return Terraform.stringify(this, this.prefix, level);
+  }
+}
+
+export class TerraformObject extends TerraformBlock {
+  constructor() {
+    super(undefined, false);
+  }
+}
+
+export class TerraformVariable extends TerraformBlock {
+  constructor(name: string, type?: TerraformDataTypes, description?: string) {
+    super('variable');
+    this.labels.push(name);
+
+    if (type) {
+      this.addExpression('type', new TerraformValue(type));
+    }
+
+    if (description) {
+      this.addExpression('description', new TerraformValue(JSON.stringify(description)));
+    }
   }
 }
 
@@ -78,10 +112,36 @@ export class TerraformValue implements ITerraformStatement {
   }
 }
 
+export class TerraformFunction implements ITerraformStatement {
+  constructor(private readonly name: any, private readonly args?: ITerraformStatement[]) {}
+
+  get type(): string {
+    return '';
+  }
+
+  stringify(level: number): string {
+    const args = !this.args ? '' : this.args.map((x) => x.stringify(level)).join(', ');
+    return `${this.name}(${args})`;
+  }
+}
+
 export class TerraformExpression {
   constructor(readonly left: string, readonly right: ITerraformStatement) {}
 
   stringify(level: number): string {
     return `${indent(level)}${this.left} = ${this.right.stringify(level)}`;
+  }
+}
+
+export class TerraformDocument {
+  private readonly statements: ITerraformStatement[] = [];
+
+  appendStatement(statement: ITerraformStatement) {
+    this.statements.push(statement);
+    return this;
+  }
+
+  stringify(): string {
+    return this.statements.map((x) => Terraform.stringify(x, true)).join('\n\n');
   }
 }

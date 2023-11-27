@@ -27,8 +27,8 @@ export class DovetailLambdaMicroservice implements ITerraformMiddleware {
 
   generateHttpLambdas(manifest: TrigintaManifest): TerraformBlock[] {
     return manifest.functions.map((func) => {
-      const httpLambda = new TerraformBlock('resource', 'aws_lambda_function');
-      httpLambda.tags.push(`${manifest.name}_${func.name}_lambda`);
+      const httpLambda = new TerraformBlock('resource').appendLabel('aws_lambda_function');
+      httpLambda.labels.push(`${manifest.name}_${func.name}_lambda`);
       httpLambda.expressions.push(
         new TerraformExpression(
           's3_bucket',
@@ -82,6 +82,6 @@ export class DovetailLambdaMicroservice implements ITerraformMiddleware {
   }
 
   writeBlocks(blocks: TerraformBlock[], file: string): void {
-    fs.writeFileSync(file, blocks.map((x) => Terraform.stringify(x)).join('\n'), 'utf-8');
+    fs.writeFileSync(file, blocks.map((x) => Terraform.stringify(x, true)).join('\n'), 'utf-8');
   }
 }

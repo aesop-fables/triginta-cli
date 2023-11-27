@@ -1,14 +1,12 @@
+import fs from 'fs';
 import {
   TerraformBlock,
+  TerraformDataTypes,
+  TerraformDocument,
   TerraformExpression,
   TerraformValue,
-  TerraformDocument,
   TerraformVariable,
-  TerraformDataTypes,
-  TerraformFunction,
-  TerraformObject,
-} from '../terraform';
-import fs from 'fs';
+} from './TerraformTypes';
 
 declare type TerraformFile = { path: string; document: TerraformDocument };
 
@@ -18,7 +16,7 @@ function generateData(): TerraformFile {
     .appendStatement(new TerraformBlock('data').appendLabel('aws_caller_identity').appendLabel('current'))
     .appendStatement(new TerraformBlock('data').appendLabel('aws_region').appendLabel('current'));
 
-  return { path: './output/data.tf', document };
+  return { path: './data.tf', document };
 }
 
 // ✅
@@ -38,7 +36,7 @@ function generateVersions(): TerraformFile {
       ),
   );
 
-  return { path: './output/versions.tf', document };
+  return { path: './versions.tf', document };
 }
 
 function generateVariables(): TerraformFile {
@@ -46,16 +44,7 @@ function generateVariables(): TerraformFile {
     new TerraformVariable('app_name', TerraformDataTypes.string),
   );
 
-  const objectSchema = new TerraformObject().addExpression('method', new TerraformValue(TerraformDataTypes.string));
-
-  const routes = new TerraformVariable('routes');
-  const list = new TerraformFunction('list', [new TerraformFunction('map', [objectSchema])]);
-
-  routes.addExpression('type', list);
-
-  document.appendStatement(routes);
-
-  return { path: './output/variables.tf', document };
+  return { path: './variables.tf', document };
 }
 
 function generateFiles(): TerraformFile[] {
@@ -69,15 +58,5 @@ function writeFiles(files: TerraformFile[]) {
   }
 }
 
-describe('debug', () => {
-  test('debug', () => {
-    if (fs.existsSync('./output')) {
-      fs.rmSync('./output', { force: true, recursive: true });
-    }
-
-    fs.mkdirSync('./output');
-
-    const sampleFiles = generateFiles();
-    writeFiles(sampleFiles);
-  });
-});
+const sampleFiles = generateFiles();
+writeFiles(sampleFiles);
