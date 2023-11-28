@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import fs from 'fs';
+
 function indent(level: number) {
   let value = '';
   for (let i = 0; i < level; i++) {
@@ -7,6 +9,8 @@ function indent(level: number) {
 
   return value;
 }
+
+export declare type TerraformFile = { path: string; document: TerraformDocument };
 
 export enum TerraformDataTypes {
   string = 'string',
@@ -41,6 +45,13 @@ export class Terraform {
 
     output += `${base}}${prefixScope ? '\n' : ''}`;
     return output;
+  }
+
+  static writeFiles(files: TerraformFile[]) {
+    for (let i = 0; i < files.length; i++) {
+      const { path, document } = files[i];
+      fs.writeFileSync(path, document.stringify(), 'utf-8');
+    }
   }
 }
 
@@ -112,6 +123,17 @@ export class TerraformValue implements ITerraformStatement {
   }
 }
 
+export class TerraformStringValue implements ITerraformStatement {
+  constructor(private readonly value: string) {}
+  get type(): string {
+    return '';
+  }
+
+  stringify(): string {
+    return JSON.stringify(this.value);
+  }
+}
+
 export class TerraformFunction implements ITerraformStatement {
   constructor(private readonly name: any, private readonly args?: ITerraformStatement[]) {}
 
@@ -122,6 +144,19 @@ export class TerraformFunction implements ITerraformStatement {
   stringify(level: number): string {
     const args = !this.args ? '' : this.args.map((x) => x.stringify(level)).join(', ');
     return `${this.name}(${args})`;
+  }
+}
+
+export class TerraformArray implements ITerraformStatement {
+  constructor(private readonly items: ITerraformStatement[]) {}
+
+  get type(): string {
+    return '';
+  }
+
+  stringify(level: number): string {
+    const items = this.items.length === 0 ? '' : this.items.map((x) => x.stringify(level)).join(', ');
+    return `[${items}]`;
   }
 }
 

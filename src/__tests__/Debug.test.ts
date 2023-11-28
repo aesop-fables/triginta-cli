@@ -7,10 +7,9 @@ import {
   TerraformDataTypes,
   TerraformFunction,
   TerraformObject,
+  TerraformFile,
 } from '../terraform';
 import fs from 'fs';
-
-declare type TerraformFile = { path: string; document: TerraformDocument };
 
 // ✅
 function generateData(): TerraformFile {
